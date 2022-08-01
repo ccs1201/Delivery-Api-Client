@@ -20,6 +20,11 @@ public class ClientApiException extends RuntimeException {
         deserializeResponseModelException(cause);
     }
 
+    public ClientApiException(RestClientResponseException cause) {
+        super(cause);
+        deserializeResponseModelException(cause);
+    }
+
     private void deserializeResponseModelException(RestClientResponseException cause) {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
